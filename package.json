@@ -1,7 +1,15 @@
 {
-  "name": "",
+  "name": "nike-website-demo",
   "type": "module",
   "version": "0.0.1",
+  "description": "A demo website for Nike",
+  "author": "David Sandoval | devsandoval.me",
+  "license": "MIT",
+  "keywords": [
+    "nike",
+    "website",
+    "demo"
+  ],
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
