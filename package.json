@@ -1,24 +1,42 @@
 {
-  "name": "nike-website-demo",
-  "type": "module",
-  "version": "0.0.1",
-  "description": "A demo website for Nike",
-  "author": "David Sandoval | devsandoval.me",
-  "license": "MIT",
-  "keywords": [
-    "nike",
-    "website",
-    "demo"
-  ],
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.7",
-    "astro": "^5.8.0",
-    "tailwindcss": "^4.1.7"
-  }
+    "name": "nike-website-demo",
+    "type": "module",
+    "version": "0.0.1",
+    "description": "A demo website for Nike",
+    "author": "David Sandoval | devsandoval.me",
+    "license": "MIT",
+    "keywords": [
+        "nike",
+        "website",
+        "demo"
+    ],
+    "scripts": {
+        "dev": "astro dev",
+        "build": "astro check && astro build",
+        "preview": "astro preview",
+        "astro": "astro",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
+    },
+    "dependencies": {
+        "@astrojs/check": "^0.9.4",
+        "@tailwindcss/vite": "^4.1.7",
+        "astro": "^5.8.0",
+        "eslint-config-prettier": "^10.1.5",
+        "tailwindcss": "^4.1.7",
+        "typescript": "^5.8.3"
+    },
+    "devDependencies": {
+        "@eslint/css": "^0.8.1",
+        "@eslint/js": "^9.27.0",
+        "@eslint/json": "^0.12.0",
+        "@eslint/markdown": "^6.4.0",
+        "eslint": "^9.27.0",
+        "eslint-plugin-prettier": "^5.4.0",
+        "globals": "^16.2.0",
+        "prettier": "^3.5.3",
+        "typescript-eslint": "^8.32.1"
+    }
 }
