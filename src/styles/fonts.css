@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat.woff2') format('woff2');
+    font-weight: 100 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Palanquin';
+    src: url('/fonts/palanquin/Palanquin-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Palanquin';
+    src: url('/fonts/palanquin/Palanquin-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Palanquin';
+    src: url('/fonts/palanquin/Palanquin-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Palanquin';
+    src: url('/fonts/palanquin/Palanquin-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Palanquin';
+    src: url('/fonts/palanquin/Palanquin-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Palanquin';
+    src: url('/fonts/palanquin/Palanquin-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Palanquin';
+    src: url('/fonts/palanquin/Palanquin-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
