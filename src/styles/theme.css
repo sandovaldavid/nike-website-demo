@@ -28,12 +28,15 @@
     --breakpoint-wide: 1440px;
 }
 
-@layer utilities {
-    .bg-hero {
-        background-image: url('../assets/images/collection-background.svg');
-    }
+@utility bg-hero {
+    background-image: url('../assets/images/collection-background.svg');
+}
 
-    .bg-card {
-        background-image: url('../assets/images/thumbnail-background.svg');
-    }
+@utility bg-card {
+    background-image: url('../assets/images/thumbnail-background.svg');
+}
+
+@utility max-container {
+    max-width: 1440px;
+    margin: 0 auto;
 }
