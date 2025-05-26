@@ -1,17 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import {
+	Hero,
+	PopularProducts,
+	SuperQuality,
+	Services,
+	SpecialOffers,
+	CustomerReviews,
+	Subscribe,
+	Footer,
+} from '../sections';
+
+import Nav from '../components/Nav.astro';
 ---
 
 <Layout title='Home'>
 	<main class='relative'>
-		nav
-		<section class='xl:padding-l wide:padding-r padding-b'>hero</section>
-		<section class='padding'>PopularProducts</section>
-		<section class='padding'>SuperQuality</section>
-		<section class='padding-x py-10'>Services</section>
-		<section class='padding'>SpecialOffers</section>
-		<section class='padding'>CustomerReviews</section>
-		<section class='padding'>Subscribe</section>
-		<section class='padding'>Footer</section>
+		<Nav />
+		<section class='xl:padding-l wide:padding-r padding-b'>
+			<Hero />
+		</section>
+		<section class='padding'>
+			<PopularProducts />
+		</section>
+		<section class='padding'>
+			<SuperQuality />
+		</section>
+		<section class='padding-x py-10'>
+			<Services />
+		</section>
+		<section class='padding'>
+			<SpecialOffers />
+		</section>
+		<section class='padding'>
+			<CustomerReviews />
+		</section>
+		<section class='padding'>
+			<Subscribe />
+		</section>
+		<section class='bg-black padding-x padding-t pb-8'>
+			<Footer />
+		</section>
 	</main>
 </Layout>
