@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import { star } from '../assets/icons';
+
+interface Props {
+	imgURL: ImageMetadata;
+	name: string;
+	price: string;
+}
+
+const { imgURL, name, price }: Props = Astro.props;
+---
+
+<div class='flex flex-1 flex-col w-full max-sm:w-full items-center'>
+	<Image src={imgURL} alt={name} width={200} height={200} class='w-[280px] h-[280px]' />
+	<div class='mt-8 flex justify-start gap-2.5'>
+		<Image src={star} alt='rating' width={24} height={24} />
+		<p class='font-montserrat text-xl leading-normal text-slate-gray'>(4.5)</p>
+	</div>
+	<h3 class='mt-2 font-semibold font-palanquin text-2xl leading-normal'>
+		{name}
+	</h3>
+	<p class='mt-2 font-semibold font-montserrat text-coral-red text-2xl leading-normal'>{price}</p>
+</div>
