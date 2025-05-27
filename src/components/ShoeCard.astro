@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import type { Shoe } from '../constans';
+import type { Shoe } from '../types';
 
 interface Props {
 	imgUrl: Shoe;
@@ -26,19 +26,12 @@ const { imgUrl, isSelected = false }: Props = Astro.props;
 </div>
 
 <script>
-	// use client:load to ensure the script runs on the client
+	import { dispatchShoeSelection } from '../utils/shoeEvents';
+
 	document.querySelectorAll('[data-shoe]').forEach((element) => {
 		element.addEventListener('click', () => {
 			const shoe = JSON.parse(element.getAttribute('data-shoe') || '{}');
-			// dispatch event with structured data
-			window.dispatchEvent(
-				new CustomEvent('shoeSelected', {
-					detail: {
-						bigShoe: shoe.bigShoe,
-						thumbnail: shoe.thumbnail,
-					},
-				})
-			);
+			dispatchShoeSelection(shoe);
 		});
 	});
 </script>
