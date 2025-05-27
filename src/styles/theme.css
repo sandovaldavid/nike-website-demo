@@ -8,6 +8,9 @@
     --text-2xl: 24px;
     --text-3xl: 28px;
     --text-4xl: 48px;
+    --text-5xl: 58px;
+    --text-6xl: 64px;
+    --text-7xl: 72px;
     --text-8xl: 96px;
 
     /* Leading Sizes */
@@ -18,7 +21,10 @@
     --leading-xl: 24.38px;
     --leading-2xl: 29.26px;
     --leading-3xl: 50px;
-    --leading-4xl: 58px;
+    --leading-4xl: 56px;
+    --leading-5xl: 62px;
+    --leading-6xl: 70px;
+    --leading-7xl: 82px;
     --leading-8xl: 106px;
 
     /* Font Family */

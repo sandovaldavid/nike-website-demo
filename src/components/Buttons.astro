@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+	label: string;
+	iconUrl: ImageMetadata;
+}
+
+const { label, iconUrl }: Props = Astro.props;
+---
+
+<button
+	class='flex justify-center items-center gap-2 px-7 py-4 font-montserrat text-lg leading-none bg-coral-red rounded-full text-white border-coral-red'>
+	{label}
+	<Image src={iconUrl} alt='arrow icon' class='ml-2 rounded-full size-5' />
+</button>

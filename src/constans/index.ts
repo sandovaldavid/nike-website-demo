@@ -20,7 +20,7 @@ interface NavLink {
     label: string;
 }
 
-interface Shoe {
+export interface Shoe {
     thumbnail: ImageMetadata;
     bigShoe: ImageMetadata;
 }

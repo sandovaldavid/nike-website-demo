@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import type { Shoe } from '../constans';
+
+interface Props {
+	imgUrl: Shoe;
+	isSelected?: boolean;
+}
+
+const { imgUrl, isSelected = false }: Props = Astro.props;
+---
+
+<div
+	class={`border-2 rounded-xl cursor-pointer max-sm:flex-1 ${isSelected ? 'border-coral-red' : 'border-transparent'}`}
+	data-shoe={JSON.stringify(imgUrl)}>
+	<div
+		class='flex justify-center items-center bg-card bg-center bg-cover sm:w-40 sm:h-40 rounded-xl max-sm:p-4'>
+		<Image
+			src={imgUrl.thumbnail}
+			alt='shoe collection'
+			width={127}
+			height={103}
+			class='object-contain'
+		/>
+	</div>
+</div>
+
+<script>
+	// use client:load to ensure the script runs on the client
+	document.querySelectorAll('[data-shoe]').forEach((element) => {
+		element.addEventListener('click', () => {
+			const shoe = JSON.parse(element.getAttribute('data-shoe') || '{}');
+			// dispatch event with structured data
+			window.dispatchEvent(
+				new CustomEvent('shoeSelected', {
+					detail: {
+						bigShoe: shoe.bigShoe,
+						thumbnail: shoe.thumbnail,
+					},
+				})
+			);
+		});
+	});
+</script>
