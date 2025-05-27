@@ -7,6 +7,7 @@ interface Props {
 	backgroundColor?: string;
 	borderColor?: string;
 	textColor?: string;
+	fullWidth?: boolean;
 }
 
 const {
@@ -15,11 +16,12 @@ const {
 	backgroundColor = 'bg-coral-red',
 	borderColor = 'border-coral-red',
 	textColor = 'text-white',
+	fullWidth = false,
 }: Props = Astro.props;
 ---
 
 <button
-	class={`flex justify-center items-center gap-2 px-7 py-4 font-montserrat text-lg leading-none ${backgroundColor} border rounded-full ${textColor} ${borderColor}`}>
+	class={`flex justify-center items-center gap-2 px-7 py-4 font-montserrat text-lg leading-none ${backgroundColor} border rounded-full ${textColor} ${borderColor} ${fullWidth && 'w-full'}`}>
 	{label}
 	{iconUrl && <Image src={iconUrl} alt='arrow icon' class='ml-2 rounded-full size-5' />}
 </button>
