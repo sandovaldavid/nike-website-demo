@@ -1,5 +1,102 @@
 ---
+import { Image } from 'astro:assets';
+import Button from '../components/Buttons.astro';
+import ShoesCard from '../components/ShoeCard.astro';
+import { arrowRight } from '../assets/icons';
+import { shoes, statistics } from '../constans';
+import { bigShoe1 } from '../assets/images';
 
+// initial state
+let currentBigShoe = bigShoe1;
 ---
 
-<div>Hero</div>
+<section
+	id='home'
+	class='w-full flex xl:flex-row flex-col justify-center min-h-dvh gap-10 max-container'>
+	<div
+		class='relatve xl:w-2/5 flex flex-col justify-center items-start w-full max-xl:padding-x pt-28'>
+		<p class='text-xl leading-xl font-montserrat text-coral-red'>Our Summer collections</p>
+		<h1
+			class='mt-10 font-palanquin text-8xl leading-8xl max-sm:text-7xl max-sm:leading-7xl font-bold'>
+			<span class='xl:bg-white xl:whitespace-nowrap relative z-10 pr-10'>The New Arrival</span
+			>
+			<br />
+			<span class='text-coral-red inline-block mt-3'>Nike</span> Shoes
+		</h1>
+		<p class='font-montserrat text-slate-gray text-lg leading-8 mt-6 mb-14 sm:max-w-sm'>
+			Discover stylish Nike arrivals, quality comfort, and innovation for your active life.
+		</p>
+		<Button label='Show Now' iconUrl={arrowRight} />
+		<div class='flex justify-start items-start flex-wrap w-full mt-20 gap-16'>
+			{
+				statistics.map((stat) => (
+					<div data-id={stat.label}>
+						<p class='text-4xl font-palanquin font-bold'>{stat.value}</p>
+						<p class=' leading-7 font-montserrat text-slate-gray'>{stat.label}</p>
+					</div>
+				))
+			}
+		</div>
+	</div>
+	<div
+		class='relative flex-1 flex justify-center items-center xl:min-h-dvh max-xl:py-40 bg-primary bg-hero bg-cover bg-center'>
+		<Image
+			src={currentBigShoe}
+			alt='shoe collection'
+			width={610}
+			height={500}
+			class='object-contain relative z-10'
+		/>
+		<div class='flex sm:gap-6 gap-4 absolute -bottom-[5%] sm:left-[10%] max-sm:px-6'>
+			{
+				shoes.map((shoe) => (
+					<div data-id={shoe}>
+						<ShoesCard
+							imgUrl={shoe}
+							isSelected={currentBigShoe.src === shoe.bigShoe.src}
+						/>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<script>
+	// define the type of the custom event
+	interface ShoeSelectedEvent extends CustomEvent {
+		detail: {
+			bigShoe: {
+				src: string;
+			};
+			thumbnail: {
+				src: string;
+			};
+		};
+	}
+
+	// listen for the shoe selection event
+	window.addEventListener('shoeSelected', ((event: Event) => {
+		const shoeEvent = event as ShoeSelectedEvent;
+		const mainImage = document.querySelector('img[alt="shoe collection"]');
+		if (mainImage) {
+			mainImage.setAttribute('src', shoeEvent.detail.bigShoe.src);
+
+			// update the visual state of the cards
+			document.querySelectorAll('[data-shoe]').forEach((element) => {
+				const shoe = JSON.parse(element.getAttribute('data-shoe') || '{}');
+				const parent = element.closest('.border-2');
+				if (parent) {
+					parent.classList.toggle(
+						'border-coral-red',
+						shoe.bigShoe.src === shoeEvent.detail.bigShoe.src
+					);
+					parent.classList.toggle(
+						'border-transparent',
+						shoe.bigShoe.src !== shoeEvent.detail.bigShoe.src
+					);
+				}
+			});
+		}
+	}) as EventListener);
+</script>
