@@ -4,13 +4,22 @@ import { Image } from 'astro:assets';
 interface Props {
 	label: string;
 	iconUrl?: ImageMetadata;
+	backgroundColor?: string;
+	borderColor?: string;
+	textColor?: string;
 }
 
-const { label, iconUrl }: Props = Astro.props;
+const {
+	label,
+	iconUrl,
+	backgroundColor = 'bg-coral-red',
+	borderColor = 'border-coral-red',
+	textColor = 'text-white',
+}: Props = Astro.props;
 ---
 
 <button
-	class='flex justify-center items-center gap-2 px-7 py-4 font-montserrat text-lg leading-none bg-coral-red rounded-full text-white border-coral-red'>
+	class={`flex justify-center items-center gap-2 px-7 py-4 font-montserrat text-lg leading-none ${backgroundColor} border rounded-full ${textColor} ${borderColor}`}>
 	{label}
 	{iconUrl && <Image src={iconUrl} alt='arrow icon' class='ml-2 rounded-full size-5' />}
 </button>
