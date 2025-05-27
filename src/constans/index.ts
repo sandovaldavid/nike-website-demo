@@ -13,56 +13,16 @@ import {
     thumbnailShoe2,
     thumbnailShoe3,
 } from '../assets/images';
-import type { ImageMetadata } from 'astro';
-
-interface NavLink {
-    href: string;
-    label: string;
-}
-
-export interface Shoe {
-    thumbnail: ImageMetadata;
-    bigShoe: ImageMetadata;
-}
-
-interface Statistic {
-    value: string;
-    label: string;
-}
-
-interface Product {
-    imgURL: ImageMetadata;
-    name: string;
-    price: string;
-}
-
-interface Service {
-    imgURL: ImageMetadata;
-    label: string;
-    subtext: string;
-}
-
-interface Review {
-    imgURL: ImageMetadata;
-    customerName: string;
-    rating: number;
-    feedback: string;
-}
-
-interface FooterLink {
-    name: string;
-    link: string;
-}
-
-interface FooterSection {
-    title: string;
-    links: FooterLink[];
-}
-
-interface SocialMedia {
-    src: ImageMetadata;
-    alt: string;
-}
+import type {
+    NavLink,
+    Shoe,
+    Statistic,
+    Product,
+    Service,
+    Review,
+    FooterSection,
+    SocialMedia,
+} from '../types';
 
 export const navLinks: NavLink[] = [
     { href: '#home', label: 'Home' },
