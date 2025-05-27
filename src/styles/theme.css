@@ -1,14 +1,25 @@
 @theme {
     /* Text Sizes */
-    --text-xs: [ '12px', '16px'];
-    --text-sm: [ '14px', '20px'];
-    --text-base: [ '16px', '19.5px'];
-    --text-lg: [ '18px', '21.94px'];
-    --text-xl: [ '20px', '24.38px'];
-    --text-2xl: [ '24px', '29.26px'];
-    --text-3xl: [ '28px', '50px'];
-    --text-4xl: [ '48px', '58px'];
-    --text-8xl: [ '96px', '106px'];
+    --text-xs: 12px;
+    --text-sm: 14px;
+    --text-base: 16px;
+    --text-lg: 18px;
+    --text-xl: 20px;
+    --text-2xl: 24px;
+    --text-3xl: 28px;
+    --text-4xl: 48px;
+    --text-8xl: 96px;
+
+    /* Leading Sizes */
+    --leading-xs: 16px;
+    --leading-sm: 20px;
+    --leading-base: 19.5px;
+    --leading-lg: 21.94px;
+    --leading-xl: 24.38px;
+    --leading-2xl: 29.26px;
+    --leading-3xl: 50px;
+    --leading-4xl: 58px;
+    --leading-8xl: 106px;
 
     /* Font Family */
     --font-palanquin: 'Palanquin', sans-serif;
