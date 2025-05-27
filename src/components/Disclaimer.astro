@@ -1,0 +1,87 @@
+<div
+	class='fixed inset-0 bg-black/50 flex justify-center items-center z-50 invisible'
+	id='disclaimerModal'>
+	<div class='bg-primary rounded-2xl p-8 max-w-[600px] w-full shadow-3xl'>
+		<div class='flex justify-between items-center mb-6'>
+			<h3 class='text-2xl font-montserrat font-bold text-slate-gray'>
+				<i class='fas fa-exclamation-triangle text-coral-red mr-2'></i>
+				Aviso Importante
+			</h3>
+			<button
+				class='text-2xl text-slate-gray hover:text-coral-redtransition-colors bg-transparent border-none cursor-pointer'
+				id='closeModal'>×</button
+			>
+		</div>
+		<div class='font-montserrat'>
+			<p class='text-base text-slate-gray mb-4'>
+				Este sitio es un <strong>proyecto de demostración</strong> para mi portafolio profesional.
+				No es una tienda real y no se venden productos aquí.
+			</p>
+			<p class='text-base text-slate-gray mb-6'>
+				Todas las marcas, logotipos y nombres de productos mencionados pertenecen a sus
+				respectivos propietarios y se utilizan con fines ilustrativos.
+			</p>
+
+			<div class='mb-6'>
+				<p class='text-base text-slate-gray mb-4'>
+					¡Te invito a conocer más sobre mi trabajo!
+				</p>
+				<div class='flex flex-wrap gap-4'>
+					<a
+						href='https://devsandoval.me'
+						target='_blank'
+						class='flex items-center gap-2 text-base text-slate-gray hover:text-coral-red transition-colors'>
+						<i class='fas fa-globe'></i>
+						Mi Portafolio
+					</a>
+					<a
+						href='https://github.com/sandovaldavid'
+						target='_blank'
+						class='flex items-center gap-2 text-base text-slate-gray hover:text-coral-red transition-colors'>
+						<i class='fab fa-github'></i>
+						GitHub
+					</a>
+					<a
+						href='https://www.linkedin.com/in/devsandoval/'
+						target='_blank'
+						class='flex items-center gap-2 text-base text-slate-gray hover:text-coral-red transition-colors'>
+						<i class='fab fa-linkedin'></i>
+						LinkedIn
+					</a>
+				</div>
+			</div>
+
+			<div class='flex justify-center mt-8'>
+				<button
+					class='bg-coral-red text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity font-montserrat font-semibold cursor-pointer'
+					id='acceptModal'>
+					Entendido
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const modal = document.getElementById('disclaimerModal');
+		const closeBtn = document.getElementById('closeModal');
+		const acceptBtn = document.getElementById('acceptModal');
+
+		if (!modal) return;
+
+		// Check if user has already accepted the disclaimer
+		const hasAccepted = localStorage.getItem('disclaimerAccepted');
+		if (!hasAccepted) {
+			modal.classList.remove('invisible');
+		}
+
+		const closeModal = () => {
+			modal.classList.add('invisible');
+			localStorage.setItem('disclaimerAccepted', 'true');
+		};
+
+		closeBtn?.addEventListener('click', closeModal);
+		acceptBtn?.addEventListener('click', closeModal);
+	});
+</script>
