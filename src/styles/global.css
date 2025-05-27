@@ -4,7 +4,9 @@
 @import './theme.css';
 
 * {
-    scroll-behavior: smooth;
+    @apply scroll-smooth;
+    @apply xl:scroll-m-4;
+    @apply 2xl:scroll-m-14;
 }
 
 @utility input {
