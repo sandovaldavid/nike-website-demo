@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { headerLogo } from '../assets/images';
-import { hamburger } from '../assets/icons';
+import { hamburger, close } from '../assets/icons';
 import { navLinks } from '../constans';
 ---
 
@@ -21,8 +21,81 @@ import { navLinks } from '../constans';
 				))
 			}
 		</ul>
-		<div class='hidden max-lg:block'>
+		<div class='hidden max-lg:block cursor-pointer' id='hamburger'>
 			<Image src={hamburger} alt='hamburger' width={25} height={25} />
 		</div>
 	</nav>
 </header>
+
+<!-- Mobile Menu Overlay -->
+<div
+	id='mobile-menu'
+	class='fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300 ease-in-out'>
+	<div
+		class='bg-white w-full h-full max-w-[300px] p-8 transform transition-transform duration-300 ease-in-out -translate-x-full'
+		id='mobile-menu-content'>
+		<div class='flex justify-between items-center mb-8'>
+			<a href='/'> <Image src={headerLogo} alt='logo' width={130} height={29} /></a>
+			<button id='close-menu' class='cursor-pointer'>
+				<Image src={close} alt='close' width={25} height={25} />
+			</button>
+		</div>
+		<ul class='flex flex-col gap-8'>
+			{
+				navLinks.map((link) => (
+					<li data-id={link.label}>
+						<a
+							href={link.href}
+							class='font-montserrat leading-normal text-lg text-slate-gray mobile-link'>
+							{link.label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</div>
+
+<script>
+	const hamburger = document.getElementById('hamburger');
+	const mobileMenu = document.getElementById('mobile-menu');
+	const mobileMenuContent = document.getElementById('mobile-menu-content');
+	const closeMenu = document.getElementById('close-menu');
+	const mobileLinks = document.querySelectorAll('.mobile-link');
+
+	const openMenu = () => {
+		mobileMenu?.classList.remove('hidden');
+		// Trigger reflow
+		mobileMenu?.offsetHeight;
+		mobileMenu?.classList.remove('opacity-0');
+		mobileMenu?.classList.add('opacity-100');
+		mobileMenuContent?.classList.remove('-translate-x-full');
+		document.body.style.overflow = 'hidden';
+	};
+
+	const closeMobileMenu = () => {
+		mobileMenu?.classList.add('opacity-0');
+		mobileMenuContent?.classList.add('-translate-x-full');
+		document.body.style.overflow = 'auto';
+		// Wait for animation to finish before hiding
+		setTimeout(() => {
+			mobileMenu?.classList.add('hidden');
+		}, 300);
+	};
+
+	hamburger?.addEventListener('click', openMenu);
+
+	closeMenu?.addEventListener('click', closeMobileMenu);
+
+	// Close menu when clicking outside
+	mobileMenu?.addEventListener('click', (e) => {
+		if (e.target === mobileMenu) {
+			closeMobileMenu();
+		}
+	});
+
+	// Close menu when clicking on any link
+	mobileLinks.forEach((link) => {
+		link.addEventListener('click', closeMobileMenu);
+	});
+</script>
